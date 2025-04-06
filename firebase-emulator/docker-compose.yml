@@ -1,0 +1,10 @@
+services:
+  firebase:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+      - "5001:5001"
+      - "8088:8088"
+      - "9099:9099"
