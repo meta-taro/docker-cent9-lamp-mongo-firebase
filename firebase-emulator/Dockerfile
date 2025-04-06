@@ -12,7 +12,7 @@ WORKDIR /app/functions
 
 # 必要ファイルのコピーと依存解決・ビルド
 COPY functions/package.json functions/tsconfig.json ./
-RUN npm install
+RUN npm install && npx tsc
 COPY functions/src ./src
 RUN npm run build
 
