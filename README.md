@@ -45,6 +45,13 @@ Firebase Functions は TypeScript で記述されているため、初回起動�
 docker compose -f firebase-emulator/docker-compose.yml exec firebase npx tsc
 ```
 
+そもそもビルド時に一度のトランスパイルさせるように変更しましたが、Mac環境などでうまくのトランスパイルできない事象を確認しました。
+そのため、上記でトランスパイルできない場合は、以下のコマンドを代わりに打つか、Docker内に入って、トランスパイルを手動で実行してください。
+
+```bash
+docker compose -f firebase-emulator/docker-compose.yml exec firebase ./node_modules/.bin/tsc
+```
+
 このコマンドで functions/src/ 以下の TypeScript コードが functions/lib/ にコンパイルされます。
 成功すると、以下のような URL で Cloud Functions にアクセスできるようになります。
 
