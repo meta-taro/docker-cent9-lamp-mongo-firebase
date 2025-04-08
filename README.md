@@ -18,23 +18,25 @@
 ```bash
 cd /..DOKOKANO PATH../docker-cent9-lamp-mongo-firebase/
 docker compose -f lamp-mongo/docker-compose.yml build
-docker compose -f lamp-mongo/docker-compose.yml up -d
+docker compose -p devnet -f lamp-mongo/docker-compose.yml up -d
 ```
 
 - gRPCを入れているので、3000s程度ビルドにかかります。FIREBASE環境が不要の場合は、Dockerfileの「pecl install grpc」辺りを削ってください。
 - ブラウザで http://localhost:8080 にアクセスすると、PHP動作確認画面（phpinfo）が表示されます。
 - MongoDB には mongodb://mongo:27017 で接続可能です。
+- PJT名をdevnetにして合わせます
 
 ### 2. Firebase Emulator の起動
 
 ```bash
 cd /..DOKOKANO PATH../docker-cent9-lamp-mongo-firebase/
 docker compose -f firebase-emulator/docker-compose.yml build
-docker compose -f firebase-emulator/docker-compose.yml up -d
+docker compose -p devnet -f firebase-emulator/docker-compose.yml up -d
 ```
 
 - Firestore / Functions / Auth などを含む Firebase のローカルテスト環境を構築します。
 - エミュレーターUIは http://localhost:4000 で確認できます。
+- PJT名をdevnetにして合わせます
 
 ---
 
@@ -73,6 +75,11 @@ curl http://localhost:5001/demo-project/us-central1/helloWorld
 - LAMP環境は CentOS9 ベースで構築しています。
 - Firebase Emulator は、ローカル開発に特化した仮想Firebase環境です。
 - セキュリティ的には **本番公開には使用しないでください**。
+- PCのリソースをひっ迫するので、使わない時は落としておきましょう。
+```bash
+docker compose -f lamp-mongo/docker-compose.yml down
+docker compose -f firebase-emulator/docker-compose.yml down
+```
 
 ---
 
