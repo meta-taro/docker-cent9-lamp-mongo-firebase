@@ -6,7 +6,7 @@
  * （emulator 側で functions/helloWorld が有効になっている必要があります）
  */
 
-$endpoint = "http://firebase-emulator-firebase-1:5001/demo-project/us-central1/helloWorld";
+$endpoint = "http://firebase:5001/demo-project/us-central1/helloWorld";
 
 // 方法①: file_get_contents (簡易)
 $response = @file_get_contents($endpoint);
