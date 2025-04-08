@@ -3,6 +3,8 @@ require __DIR__ . '/vendor/autoload.php';
 
 use Google\Cloud\Firestore\FirestoreClient;
 
+putenv("FIRESTORE_EMULATOR_HOST=firebase:8088");
+
 $firestore = new FirestoreClient([
     'projectId' => 'demo-project',
     'apiEndpoint' => 'localhost:8088',
