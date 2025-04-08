@@ -77,8 +77,10 @@ curl http://localhost:5001/demo-project/us-central1/helloWorld
 - セキュリティ的には **本番公開には使用しないでください**。
 - PCのリソースをひっ迫するので、使わない時は落としておきましょう。
 ```bash
-docker compose -f lamp-mongo/docker-compose.yml down
-docker compose -f firebase-emulator/docker-compose.yml down
+docker ps
+docker compose -p devnet -f lamp-mongo/docker-compose.yml down
+docker compose -p devnet -f firebase-emulator/docker-compose.yml down
+docker ps
 ```
 
 ---
